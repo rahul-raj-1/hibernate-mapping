@@ -3,9 +3,12 @@
  */
 package com.example.hibernatemapping.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -25,6 +28,11 @@ public class Customer {
 	@Column(name="NAME ")
 	private String name;
 
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_COL", referencedColumnName = "CUST_DET_ID")
+     private CustomerDetails customerDetails;
+
+	
 	public Long getId() {
 		return id;
 	}

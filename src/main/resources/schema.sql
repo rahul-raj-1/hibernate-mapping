@@ -7,8 +7,8 @@ CREATE TABLE IF NOT EXISTS customer (
 );
 
 
-CREATE TABLE IF NOT EXISTS student (
-       id int(11) not null AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS customer_detail (
+        cust_det_id int(11) not null AUTO_INCREMENT,
     --    created_at DATETIME(6),
         first_name VARCHAR(255),
         last_name VARCHAR(255)
