@@ -5,7 +5,7 @@ package com.example.hibernatemapping.service;
 
 import java.util.List;
 
-import com.example.hibernatemapping.model.Customer;
+import com.example.hibernatemapping.domain.Customer;
 
 /**
  * @author RAHUL-PC

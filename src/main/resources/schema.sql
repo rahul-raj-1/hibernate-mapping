@@ -1,5 +1,14 @@
+CREATE TABLE IF NOT EXISTS customer (
+
+	id_col int(11) NOT NULL AUTO_INCREMENT,
+
+	name VARCHAR(255) NOT NULL UNIQUE,
+
+		constraint pk_customer primary key(id_col)
+		);
 
 
+		-- even if i remove FK contsraints 1to1 mapping will work
 CREATE TABLE IF NOT EXISTS customer_detail (
 
         cust_det_id int(11) not null AUTO_INCREMENT,
@@ -10,19 +19,10 @@ CREATE TABLE IF NOT EXISTS customer_detail (
 
         last_name VARCHAR(255),
 
-	constraint pk_customer_detail primary key(cust_det_id)
-
-);
-
-CREATE TABLE IF NOT EXISTS customer (
-
-	id_col int(11) NOT NULL AUTO_INCREMENT,
-
-	name VARCHAR(255) NOT NULL UNIQUE,
-
-		constraint pk_customer primary key(id_col)
-
-	constraint fk_customer_detail foreign key(id_col) references customer_detail(cust_det_id),
+	constraint pk_customer_detail primary key(cust_det_id),
+	constraint fk_customer_detail foreign key(cust_det_id) references customer(id_col)
 
 
 );
+
+

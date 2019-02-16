@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.hibernatemapping.model.Customer;
+import com.example.hibernatemapping.domain.Customer;
 import com.example.hibernatemapping.repository.CustomerRepository;
 import com.example.hibernatemapping.service.CustomerService;
 
@@ -26,6 +26,12 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public List<Customer> findAll() {
 		
+		 List<Customer> list = customerRepository.findAll();
+		  for ( Customer c : list )
+		  {
+			  if( c.getCustomerDetail()!=null)
+			  System.out.println( c.getCustomerDetail().getFirstName());
+		  }
 		
 		return customerRepository.findAll();
 	}
