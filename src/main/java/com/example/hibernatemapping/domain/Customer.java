@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -26,7 +27,7 @@ public class Customer {
 	@Column(name="ID_COL")
 	@Id
 	@SequenceGenerator(name="s")
-	private Long id;
+	private Integer id;
 
 	@Column(name="NAME ")
 	private String name;
@@ -34,7 +35,7 @@ public class Customer {
 	
 	  @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	  @JoinColumn(name = "ID_COL", referencedColumnName = "CUST_DET_ID") 
-	  @JsonManagedReference
+	  @JsonManagedReference 
       private  CustomerDetail customerDetail;
 	 
 	public CustomerDetail getCustomerDetail() {
@@ -43,24 +44,24 @@ public class Customer {
 
 	public void setCustomerDetail(CustomerDetail customerDetail) {
 		this.customerDetail = customerDetail;
-	    this.customerDetail.setCustomer(this);
+	    //this.customerDetail.setCustomer(this);
 	}
 	public Customer() {
 		
 	}
 	
 
-	public Customer(Long id, String name) {
+	public Customer(Integer id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

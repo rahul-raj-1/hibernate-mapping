@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.example.hibernatemapping.domain.CustomerDetail;
 
 @Repository
-public interface CustomerDetailRepository  extends JpaRepository<CustomerDetail, Long> {
+public interface CustomerDetailRepository  extends JpaRepository<CustomerDetail, Integer> {
 
 }

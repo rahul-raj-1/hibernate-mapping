@@ -7,7 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="CUSTOMER_DETAIL")
@@ -17,7 +19,7 @@ public class CustomerDetail {
 	@Column(name="CUST_DET_ID")
 	@Id
 	@SequenceGenerator(name="s1")
-    private Long custDetialId;
+    private Integer custDetialId;
 
 	@Column(name="FIRST_NAME")
 	private String firstName;
@@ -36,30 +38,31 @@ public class CustomerDetail {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
-		this.customer.setCustomerDetail(this) ;
+		//this.customer.setCustomerDetail(this) ;
 	}
 
 
-	public Long getCustDetialId() {
+	
+	
+	
+	
+	
+	
+	
+	public Integer getCustDetialId() {
 		return custDetialId;
 	}
 
-	public void setCustDetialId(Long custDetialId) {
+	public void setCustDetialId(Integer custDetialId) {
 		this.custDetialId = custDetialId;
 	}
-	
-	
-	
-	
-	
-	
-	
+
 	public CustomerDetail() {
 		
 	}
 	
 	
-	public CustomerDetail(Long custDetialId, String firstName, String lastName) {
+	public CustomerDetail(Integer custDetialId, String firstName, String lastName) {
 		super();
 		this.custDetialId = custDetialId;
 		this.firstName = firstName;
