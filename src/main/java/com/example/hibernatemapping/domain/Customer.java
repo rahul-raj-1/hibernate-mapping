@@ -13,6 +13,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  * @author RAHUL-PC
  *
@@ -30,9 +32,10 @@ public class Customer {
 	private String name;
 
 	
-	  @OneToOne(fetch = FetchType.LAZY, optional = false)
+	  @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	  @JoinColumn(name = "ID_COL", referencedColumnName = "CUST_DET_ID") 
-	  private  CustomerDetail customerDetail;
+	  @JsonManagedReference
+      private  CustomerDetail customerDetail;
 	 
 	public CustomerDetail getCustomerDetail() {
 		return customerDetail;
@@ -40,6 +43,17 @@ public class Customer {
 
 	public void setCustomerDetail(CustomerDetail customerDetail) {
 		this.customerDetail = customerDetail;
+	    this.customerDetail.setCustomer(this);
+	}
+	public Customer() {
+		
+	}
+	
+
+	public Customer(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
 	}
 
 	public Long getId() {

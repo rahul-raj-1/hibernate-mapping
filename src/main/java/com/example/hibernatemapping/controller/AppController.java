@@ -25,8 +25,11 @@ public class AppController {
 	@GetMapping
       public ResponseEntity<?> findAll()
 	{
+		//return  ResponseEntity.ok(customerService.findAllCustomerDetail());
 		return  ResponseEntity.ok(customerService.findAll());
 	}
+	
+	
 	
 	
 	

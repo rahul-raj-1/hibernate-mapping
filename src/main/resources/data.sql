@@ -4,7 +4,6 @@ INSERT INTO customer (id_col, name) VALUES
 (2, 'Computer'),
 (3, 'Science Fiction'),
 (4, 'Drama'),
-(10, 'FB'),
 (5, 'Romance');
 
 INSERT INTO customer_detail (cust_det_id, first_name,last_name) VALUES

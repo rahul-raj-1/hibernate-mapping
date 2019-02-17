@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.hibernatemapping.domain.Customer;
+import com.example.hibernatemapping.domain.CustomerDetail;
+import com.example.hibernatemapping.repository.CustomerDetailRepository;
 import com.example.hibernatemapping.repository.CustomerRepository;
 import com.example.hibernatemapping.service.CustomerService;
 
@@ -22,6 +24,9 @@ public class CustomerServiceImpl implements CustomerService {
 	
     @Autowired
 	private CustomerRepository customerRepository;
+    
+    @Autowired
+   	private CustomerDetailRepository customerRepositoryDetail;
 
 	@Override
 	public List<Customer> findAll() {
@@ -34,6 +39,12 @@ public class CustomerServiceImpl implements CustomerService {
 		  }
 		
 		return customerRepository.findAll();
+	}
+
+	@Override
+	public List<CustomerDetail> findAllCustomerDetail() {
+		// TODO Auto-generated method stub
+		return customerRepositoryDetail.findAll();
 	}
     
     
