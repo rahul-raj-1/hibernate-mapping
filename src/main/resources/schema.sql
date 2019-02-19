@@ -13,14 +13,16 @@ CREATE TABLE IF NOT EXISTS customer_detail (
 
         cust_det_id int(11) not null AUTO_INCREMENT,
 
+         cust_id int(11) ,
+
     --    created_at DATETIME(6),
 
         first_name VARCHAR(255),
 
         last_name VARCHAR(255),
 
-	constraint pk_customer_detail primary key(cust_det_id),
-	constraint fk_customer_detail foreign key(cust_det_id) references customer(id_col)
+	constraint pk_customer_detail primary key(cust_det_id)
+	,constraint fk_customer_detail foreign key(cust_id) references customer(id_col)
 
 
 );

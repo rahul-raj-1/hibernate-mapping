@@ -13,7 +13,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -34,7 +33,7 @@ public class Customer {
 
 	
 	  @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	  @JoinColumn(name = "ID_COL", referencedColumnName = "CUST_DET_ID") 
+	  @JoinColumn(name = "ID_COL", referencedColumnName = "CUST_ID") 
 	  @JsonManagedReference 
       private  CustomerDetail customerDetail;
 	 

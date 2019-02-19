@@ -1,5 +1,7 @@
 package com.example.hibernatemapping.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +11,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="CUSTOMER_DETAIL")
@@ -21,6 +22,9 @@ public class CustomerDetail {
 	@SequenceGenerator(name="s1")
     private Integer custDetialId;
 
+	@Column(name="CUST_ID")
+	private Integer custId;
+	
 	@Column(name="FIRST_NAME")
 	private String firstName;
 	
@@ -49,6 +53,14 @@ public class CustomerDetail {
 	
 	
 	
+	public Integer getCustId() {
+		return custId;
+	}
+
+	public void setCustId(Integer custId) {
+		this.custId = custId;
+	}
+
 	public Integer getCustDetialId() {
 		return custDetialId;
 	}
