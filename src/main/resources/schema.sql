@@ -1,30 +1,31 @@
-CREATE TABLE IF NOT EXISTS customer (
+CREATE TABLE IF NOT EXISTS t_users (
 
 	id_col int(11) NOT NULL AUTO_INCREMENT,
-
-	name VARCHAR(255) NOT NULL UNIQUE,
-
-		constraint pk_customer primary key(id_col)
+    user_name VARCHAR(255) NOT NULL UNIQUE,
+	user_email VARCHAR(255) ,
+    password VARCHAR(255) ,
+    is_active int(1),
+     constraint pk_user_id primary key(id_col)
 		);
 
 
-		-- even if i remove FK contsraints 1to1 mapping will work
-CREATE TABLE IF NOT EXISTS customer_detail (
+CREATE TABLE IF NOT EXISTS t_roles (
 
-        cust_det_id int(11) not null AUTO_INCREMENT,
+        role_id int(11) not null AUTO_INCREMENT,
+		role_name VARCHAR(255),
+		is_role_active int(1),
+      constraint pk_role_id primary key(role_id)
+	 );
 
-         cust_id int(11) ,
+	 
+	 CREATE TABLE IF NOT EXISTS t_map_user_roles (
+        
+	    map_id  int(10),
+         user_id  int(11) ,
+		role_id VARCHAR(255),
+		is_active int(1),
+      constraint pk_map_id primary key(map_id)
+	 );
 
-    --    created_at DATETIME(6),
-
-        first_name VARCHAR(255),
-
-        last_name VARCHAR(255),
-
-	constraint pk_customer_detail primary key(cust_det_id)
-	,constraint fk_customer_detail foreign key(cust_id) references customer(id_col)
-
-
-);
 
 
