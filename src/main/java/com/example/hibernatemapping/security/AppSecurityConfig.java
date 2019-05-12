@@ -1,9 +1,5 @@
 package com.example.hibernatemapping.security;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 /*The answer is inside your question. when you are using a different authentication system, 
@@ -42,17 +35,26 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
-	@SuppressWarnings("deprecation")
-	@Bean
-	protected UserDetailsService userDetailsService()
-	{
-		
-		List<UserDetails> user = new ArrayList<>();
-		
 	
-		user.add(User.withDefaultPasswordEncoder().username("RAHUL").password("RAHUL").roles("ADMIN").build());
-		return new InMemoryUserDetailsManager(user);
+    private BCryptPasswordEncoder passwordEncoder;
+
+	
+	@Bean
+	public AuthenticationProvider authenticationProvider()
+	{
+		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+		
+		provider.setUserDetailsService(userDetailsService);
+		
+		//without the we will get password not mapped error
+		//provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance()); deprecated .Plain text password
+		// Bcry is only working with bcrpt starting with $2a
+		provider.setPasswordEncoder(new BCryptPasswordEncoder());
+		
+		
+		return provider;
 	}
+	
 	
 	
 	

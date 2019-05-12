@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS t_users (
 	id_col int(11) NOT NULL AUTO_INCREMENT,
     user_name VARCHAR(255) NOT NULL UNIQUE,
 	user_email VARCHAR(255) ,
-    password VARCHAR(255) ,
+    password VARCHAR(200) ,
     is_active int(1),
      constraint pk_user_id primary key(id_col)
 		);

@@ -1,6 +1,6 @@
 INSERT INTO t_users (id_col, user_name ,user_email ,password,is_active) VALUES
 
-(1, 'Rahul' ,'rahul.raj@gmail.com','pass',1),
+(1, 'Rahul' ,'rahul.raj@gmail.com','$2a$10$5xzBOVMvLje0N2SHjkiI5uqkmvDW8AJ1WQ/ct1EZCDCD/4EhS1ef.',1),-- pasword is asd
 (2, 'Ronaldo' ,'cr7@gmail.com','pass',1),
 (3, 'Lio Messi' ,'messi@gmail.com','pass',1),
 (4, 'Ronaldo Brazil' ,'r9@gmail.com','pass',1),
