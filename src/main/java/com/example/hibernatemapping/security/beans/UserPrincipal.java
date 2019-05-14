@@ -1,13 +1,15 @@
 package com.example.hibernatemapping.security.beans;
 
 import java.util.Collection;
-import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.hibernatemapping.domain.User;
+import com.example.hibernatemapping.domain.UserRole;
 
 public class UserPrincipal implements UserDetails {
 	
@@ -21,7 +23,19 @@ public class UserPrincipal implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-		return Collections.singletonList(new SimpleGrantedAuthority("USER_ROLE"));
+		 List<UserRole> userRole = user.getUserRole();
+		  Collection<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
+
+		 
+		 for (UserRole ur : userRole)
+		 {
+			  authorities.add(new SimpleGrantedAuthority(ur.getRole().getRoleName()));
+
+			 
+		 }
+		 
+		
+		return authorities;
 	}
 
 	@Override
@@ -65,5 +79,9 @@ public class UserPrincipal implements UserDetails {
 		// TODO Auto-generated method stub
 		return user.getUserEmail();
 	}
+	
+	
+	
+	
 
 }

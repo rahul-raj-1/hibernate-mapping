@@ -17,7 +17,7 @@ public class Role {
     private Integer roleId;
 
 	@Column(name="ROLE_NAME")
-	private Long roleName;
+	private String roleName;
 	
 	@Column(name="IS_ROLE_ACTIVE")
 	private Integer isRoleActive;
@@ -30,11 +30,11 @@ public class Role {
 		this.roleId = roleId;
 	}
 
-	public Long getRoleName() {
+	public String getRoleName() {
 		return roleName;
 	}
 
-	public void setRoleName(Long roleName) {
+	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
 

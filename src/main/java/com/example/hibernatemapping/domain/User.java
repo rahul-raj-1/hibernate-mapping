@@ -3,9 +3,17 @@
  */
 package com.example.hibernatemapping.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -36,7 +44,9 @@ public class User {
 	private Integer isActive;
 
 	
-
+	@OneToMany(	cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "USER_ID",referencedColumnName="ID_COL")
+	private List<UserRole> userRole =new ArrayList<>();
 	
 
 	public Integer getUserId() {
@@ -87,6 +97,19 @@ public class User {
 	public void setIsActive(Integer isActive) {
 		this.isActive = isActive;
 	}
+
+
+	public List<UserRole> getUserRole() {
+		return userRole;
+	}
+
+
+	public void setUserRole(List<UserRole> userRole) {
+		this.userRole = userRole;
+	}
+
+
+	
 
 	
 	  

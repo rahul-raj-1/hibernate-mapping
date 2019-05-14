@@ -22,9 +22,11 @@ CREATE TABLE IF NOT EXISTS t_roles (
         
 	    map_id  int(10),
          user_id  int(11) ,
-		role_id VARCHAR(255),
+		role_id int(11),
 		is_active int(1),
       constraint pk_map_id primary key(map_id)
+     -- foreign key (user_id) references t_users(id_col)
+
 	 );
 
 

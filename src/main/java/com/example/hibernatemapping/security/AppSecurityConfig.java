@@ -5,8 +5,10 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,22 +26,17 @@ in my database or not, spring-security had to do the rest.
 */
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true) //if we remove this @PreAuthorize wont work
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	
 	
 	
 	@Autowired
-	private DataSource dataSource ;
-	
-	@Autowired
 	private UserDetailsService userDetailsService;
 	
 	
-    private BCryptPasswordEncoder passwordEncoder;
-
-	
-	@Bean
+    @Bean
 	public AuthenticationProvider authenticationProvider()
 	{
 		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
