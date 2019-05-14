@@ -26,10 +26,18 @@ in my database or not, spring-security had to do the rest.
 */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true) //if we remove this @PreAuthorize wont work
+@EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true,jsr250Enabled = true) //enable global Method Security
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	
+	/*
+	 * @EnableGlobalMethodSecurity(
+  prePostEnabled = true, 
+  securedEnabled = true, 
+  jsr250Enabled = true)
+  The prePostEnabled property enables Spring Security pre/post annotations
+The securedEnabled property determines if the @Secured annotation should be enabled
+The jsr250Enabled property allows us to use the @RoleAllowed annotation
+	 */
 	
 	
 	@Autowired

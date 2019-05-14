@@ -6,6 +6,7 @@ package com.example.hibernatemapping.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,7 @@ import com.example.hibernatemapping.repository.UserRoleRepository;
  *
  */
 @Controller
-@PreAuthorize("hasAuthority('MANGER')")
+//@PreAuthorize("hasAuthority('MANGER')")
 public class AppController {
 
    @Autowired
@@ -33,6 +34,15 @@ public class AppController {
 		
 	}
 	
+	
+	  @RequestMapping("/admin")
+	 @Secured(value = { "ADMIN" }) //	  @PreAuthorize("hasAuthority('ADMIN')") will also work
+     public String adminPage()
+	{
+	
+		return "admin.jsp";		
+		
+	}
 	
 	
 	

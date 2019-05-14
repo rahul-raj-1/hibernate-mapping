@@ -5,6 +5,5 @@
     <title> Head  </title>
 </head>
 <body>
-First page .Everyone can see this page  
-</body>
+Only Admin can see this page</body>
 </html>
