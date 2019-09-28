@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Where;
+
 /**
  * @author RAHUL-PC
  *
@@ -46,6 +48,7 @@ public class User {
 	
 	@OneToMany(	cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "USER_ID",referencedColumnName="ID_COL")
+	@Where(clause = "is_active = 1")
 	private List<UserRole> userRole =new ArrayList<>();
 	
 

@@ -12,5 +12,15 @@ public interface UserRepository  extends JpaRepository<User, Integer>{
 	
 	User findByUserName( String userName) ;
 	
+	default void m1()
+	{
+		
+	}
+	
+	static void  m2()
+	{
+		
+	}
+	
 	
 }

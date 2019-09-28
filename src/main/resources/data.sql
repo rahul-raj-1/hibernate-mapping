@@ -16,7 +16,7 @@ INSERT INTO t_roles (role_id,role_name,is_role_active) VALUES
 INSERT INTO t_map_user_roles (map_id,user_id,role_id,is_active) VALUES
 (1,1,1,1),
 (2,1,2,1),
-(3,1,3,1),
+(3,1,3,0),
 (4,2,1,1),
 (5,3,1,1),
 (6,4,1,1),
